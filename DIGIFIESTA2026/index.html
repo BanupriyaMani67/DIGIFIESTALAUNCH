@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160606">
+<title>DIGIFIESTA 2026 | MVJ Degree College</title>
+
+<style>
+:root {
+  --red: #ff303b;
+  --orange: #ff7900;
+  --gold: #ffd166;
+  --bg: #100505;
+  --text: #fff5ee;
+  --muted: #d6bdb3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at top left, #40100f 0, transparent 40%),
+    radial-gradient(ellipse at bottom right, #391207 0, transparent 40%),
+    var(--bg);
+}
+
+button, input { font: inherit; }
+
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+#loginPage.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(100%, 420px);
+  padding: 36px 28px;
+  text-align: center;
+  border: 1px solid #783323;
+  border-radius: 24px;
+  background: rgba(34, 10, 10, .94);
+  box-shadow: 0 0 45px #ff4a201b;
+  animation: appear .8s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.college {
+  color: var(--gold);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+.logo {
+  width: 85px;
+  height: 85px;
+  margin: 23px auto;
+  display: grid;
+  place-items: center;
+  border-radius: 25px;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--red), var(--orange), var(--gold));
+  box-shadow: 0 0 30px #ff790044;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.gradient {
+  color: var(--orange);
+  background: linear-gradient(90deg, #ff3535, #ff7900, #ffd166, #ff3535);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 4s linear infinite;
+}
+
+@keyframes gradient {
+  to { background-position: 300% center; }
+}
+
+.login-card h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+form { text-align: left; }
+
+label {
+  display: block;
+  margin: 15px 0 8px;
+  font-size: .9rem;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #66332b;
+  border-radius: 11px;
+  color: white;
+  background: #160808;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px #ff790020;
+}
+
+input[readonly] {
+  color: #ffd6b0;
+  background: #24100d;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 11px;
+  padding: 14px 20px;
+  color: #260707;
+  font-weight: 900;
+  background: linear-gradient(100deg, var(--red), var(--orange), var(--gold));
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px #ff790044;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.note {
+  margin-top: 17px;
+  font-size: .78rem;
+  color: #bca29a;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 16px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  background: #130606ed;
+  border-bottom: 1px solid #ff790033;
+  backdrop-filter: blur(15px);
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand span { color: var(--orange); }
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.outline-btn {
+  border: 1px solid #a64c2c;
+  border-radius: 9px;
+  padding: 9px 13px;
+  color: var(--gold);
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 530px;
+  padding: 95px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content { max-width: 900px; }
+
+.badge {
+  display: inline-block;
+  padding: 9px 15px;
+  margin-bottom: 25px;
+  border: 1px solid #ffad5a66;
+  border-radius: 50px;
+  color: #ffdbb4;
+  font-size: .78rem;
+  letter-spacing: 1.5px;
+  animation: appear .8s .2s both;
+}
+
+.welcome-title {
+  font-size: clamp(2.5rem, 8vw, 5.8rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ff3030, #ff7900, #ffd166, #ff4b35);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: zoomTitle 1.2s ease-out both,
+             gradient 4s linear infinite,
+             glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes zoomTitle {
+  from { opacity: 0; transform: scale(.6) translateY(25px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes glow {
+  to { filter: drop-shadow(0 0 18px #ff790088); }
+}
+
+.hero p {
+  max-width: 720px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 1.9;
+  animation: appear 1s .4s both;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hero-actions .btn { min-width: 190px; }
+
+.section { padding: 70px 6%; }
+
+.section-heading {
+  text-align: center;
+  margin: 0 auto 38px;
+  max-width: 700px;
+}
+
+.eyebrow {
+  color: var(--orange);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 12px 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.event-grid {
+  max-width: 1150px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 23px;
+}
+
+.event-card {
+  padding: 28px;
+  border: 1px solid #a44b304d;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #35100e, #1b0808);
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--orange);
+  box-shadow: 0 0 28px #ff790026;
+}
+
+.event-icon {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+}
+
+.event-card h3 {
+  font-size: 1.25rem;
+  margin: 13px 0;
+}
+
+.event-card p {
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.event-tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 30px;
+  border: 1px solid #ff790055;
+  color: #ffcf9f;
+  font-size: .72rem;
+  letter-spacing: 1px;
+}
+
+.day-divider {
+  max-width: 1150px;
+  margin: 0 auto 35px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ffcf9f;
+}
+
+.day-divider::before,
+.day-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ff790077, transparent);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s, transform .7s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.video-wrap {
+  max-width: 1000px;
+  margin: auto;
+  padding: 55px 20px 80px;
+}
+
+.back-btn { margin-bottom: 30px; }
+
+.video-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin-bottom: 14px;
+}
+
+.video-description {
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 1px solid #ff790066;
+  border-radius: 18px;
+  background: #080303;
+  box-shadow: 0 0 35px #ff4a201c;
+  overflow: hidden;
+}
+
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  object-fit: contain;
+}
+
+.video-help {
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-top: 20px;
+  font-size: .9rem;
+}
+
+footer {
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid #ff790033;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: .85rem;
+}
+
+footer strong { color: var(--gold); }
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: fall var(--duration) linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(900deg);
+    opacity: 0;
+  }
+}
+
+.toast {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  background: #35110c;
+  border: 1px solid #ff790077;
+  border-radius: 12px;
+  padding: 13px 18px;
+  transition: .3s;
+  text-align: center;
+  max-width: 90%;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media(max-width: 900px) {
+  .event-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media(max-width: 600px) {
+  header { padding: 13px 4%; }
+  .brand { font-size: .85rem; }
+  .outline-btn { padding: 8px; font-size: .75rem; }
+  .event-grid { grid-template-columns: 1fr; }
+  .hero { min-height: 470px; padding: 75px 20px; }
+  .section { padding: 55px 5%; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN PAGE ================= -->
+<main id="loginPage" class="page active">
+  <section class="login-card">
+    <p class="college">
+      MVJ Degree College<br>
+      IT Club Presents
+    </p>
+
+    <div class="logo">🎉</div>
+
+    <h1><span class="gradient">DIGIFIESTA</span> 2026</h1>
+
+    <p class="subtitle">
+      Your festival of technology, creativity and innovation starts here.
+    </p>
+
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        value="DIGIFIESTA2026@gmail.com"
+        readonly
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Enter password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button class="btn full-btn" type="submit">
+        LOGIN &amp; ENTER ✨
+      </button>
+    </form>
+
+    <p class="note">DIGIFIESTA 2026 · Official Event Portal</p>
+  </section>
+</main>
+
+<!-- ================= WELCOME + EVENTS PAGE ================= -->
+<main id="welcomePage" class="page">
+  <header>
+    <div class="brand">DIGI<span>FIESTA</span> 2026</div>
+
+    <div class="header-actions">
+      <button class="outline-btn" onclick="goHome()">Home</button>
+      <button class="outline-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="badge">MVJ DEGREE COLLEGE · IT CLUB</span>
+
+      <h1 class="welcome-title">
+        WELCOME TO<br>DIGIFIESTA 2026
+      </h1>
+
+      <p>
+        Get ready for a grand celebration of technology, creativity
+        and innovation. Discover exciting challenges, explore new ideas
+        and celebrate the spirit of DIGIFIESTA 2026.
+      </p>
+
+      <!-- THE ONLY LAUNCH VIDEO BUTTON -->
+      <div class="hero-actions">
+        <button class="btn" onclick="openVideo()">
+          ▶ LAUNCH EVENT
+        </button>
+
+        <a class="btn" href="#day1">
+          EXPLORE EVENTS ↓
+        </a>
+      </div>
+    </div>
+  </section>
+  
+<!-- ================= EXPLORE EVENTS ================= -->
+<section class="section" id="events">
+
+  <!-- EVENT SECTION INTRO -->
+  <div class="section-heading reveal">
+    <span class="eyebrow">15 & 16 OCTOBER 2026</span>
+    <h2>Explore the <span class="gradient">Events</span></h2>
+    <p>
+      Seven exciting challenges. Two unforgettable days.
+      Bring your creativity, teamwork and problem-solving skills
+      to DIGIFIESTA 2026!
+    </p>
+  </div>
+
+  <!-- ================= DAY 1 ================= -->
+  <section id="day1" style="padding: 10px 0 55px;">
+
+    <div class="section-heading reveal">
+      <span class="eyebrow">15 OCTOBER 2026</span>
+      <h2>DAY 1 — <span class="gradient">Let the Games Begin!</span></h2>
+      <p>
+        From website creation to puzzles, teamwork and artistic design,
+        Day 1 is all about creativity, speed and smart thinking.
+      </p>
+    </div>
+
+    <div class="day-divider reveal">
+      <span>DAY ONE · FOUR EVENTS</span>
+    </div>
+
+    <div class="event-grid">
+
+      <!-- WEBCRAFT CHALLENGE -->
+      <article class="event-card reveal">
+        <div class="event-icon">🌐</div>
+        <span class="event-tag">DAY 1 · EVENT 01</span>
+        <h3>WEBCRAFT CHALLENGE</h3>
+
+        <p>
+          Turn your ideas into an impressive website front page!
+          Use AI tools or your coding skills to design and build
+          a creative webpage before time runs out.
+        </p>
+
+        <div class="event-tag">AI · CODING · DESIGN</div>
+      </article>
+
+      <!-- CONSTRUCT2CONQUER -->
+      <article class="event-card reveal">
+        <div class="event-icon">🏗️</div>
+        <span class="event-tag">DAY 1 · EVENT 02</span>
+        <h3>CONSTRUCT2CONQUER</h3>
+
+        <p>
+          A two-player challenge combining teamwork and brainpower.
+          One player constructs and deconstructs a glass pyramid,
+          while the other solves jumbled words based on a question.
+        </p>
+
+        <div class="event-tag">TEAMWORK · SPEED · LOGIC</div>
+      </article>
+
+      <!-- JIGSAW JAM -->
+      <article class="event-card reveal">
+        <div class="event-icon">🧩</div>
+        <span class="event-tag">DAY 1 · EVENT 03</span>
+        <h3>JIGSAW JAM</h3>
+
+        <p>
+          Race against the clock to complete a jigsaw puzzle.
+          Test your observation, patience and problem-solving skills
+          as you put every piece in the right place.
+        </p>
+
+        <div class="event-tag">PUZZLES · FOCUS · SPEED</div>
+      </article>
+
+      <!-- LOGO RANG -->
+      <article class="event-card reveal">
+        <div class="event-icon">🎨</div>
+        <span class="event-tag">DAY 1 · EVENT 04</span>
+        <h3>LOGO RANG</h3>
+
+        <p>
+          Mix tradition with technology by creating a unique logo
+          using rangoli. Showcase your imagination, originality
+          and artistic creativity through a standout design.
+        </p>
+
+        <div class="event-tag">ART · TRADITION · CREATIVITY</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= DAY 2 ================= -->
+  <section id="day2" style="padding: 35px 0 10px;">
+
+    <div class="section-heading reveal">
+      <span class="eyebrow">16 OCTOBER 2026</span>
+      <h2>DAY 2 — <span class="gradient">The Ultimate Team Showdown!</span></h2>
+
+      <p>
+        Form your squad and compete across all three challenges.
+        Your team's overall performance determines the ultimate champions!
+      </p>
+    </div>
+
+    <div class="day-divider reveal">
+      <span>DAY TWO · THREE TEAM CHALLENGES</span>
+    </div>
+
+    <div class="event-grid">
+
+      <!-- PROMPT BATTLE -->
+      <article class="event-card reveal">
+        <div class="event-icon">🤖</div>
+        <span class="event-tag">DAY 2 · EVENT 01</span>
+        <h3>PROMPT BATTLE</h3>
+
+        <p>
+          Round 1: Generate creative images based on given themes.
+          Round 2: Transform a boring picture into an exciting
+          movie poster using AI creativity and imagination.
+        </p>
+
+        <div class="event-tag">AI · IMAGE GENERATION · DESIGN</div>
+      </article>
+
+      <!-- MEME BATTLE -->
+      <article class="event-card reveal">
+        <div class="event-icon">😂</div>
+        <span class="event-tag">DAY 2 · EVENT 02</span>
+        <h3>MEME BATTLE</h3>
+
+        <p>
+          Create funny, original memes based on a given theme
+          and turn an ordinary picture into meme-worthy gold.
+          Show your humour, originality and creative thinking.
+        </p>
+
+        <div class="event-tag">HUMOUR · MEMES · CREATIVITY</div>
+      </article>
+
+      <!-- PASSWORD CHALLENGE -->
+      <article class="event-card reveal">
+        <div class="event-icon">🔐</div>
+        <span class="event-tag">DAY 2 · EVENT 03</span>
+        <h3>PASSWORD CHALLENGE</h3>
+
+        <p>
+          Round 1: Use a provided dataset to solve the website
+          password challenge. Round 2: Solve a family-tree problem
+          using logic, reasoning and smart strategies.
+        </p>
+
+        <div class="event-tag">LOGIC · DATA · PROBLEM-SOLVING</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FINAL CALL TO PARTICIPATE -->
+  <div class="section-heading reveal" style="margin-top: 75px;">
+    <span class="eyebrow">YOUR CHALLENGE STARTS HERE</span>
+
+    <h2>
+      Think Fast.<br>
+      <span class="gradient">Create Boldly. Compete Fearlessly.</span>
+    </h2>
+
+    <p>
+      Don't just watch the fun. Be part of it!
+      Bring your ideas, challenge your friends and make
+      DIGIFIESTA 2026 unforgettable.
+    </p>
+
+    <p style="margin-top: 18px;">
+      <strong style="color: var(--gold);">
+        15 & 16 October 2026 · Organised by the IT Club
+      </strong>
+    </p>
+
+    <p style="margin-top: 12px;">
+      SEE YOU AT DIGIFIESTA! 🎉🚀
+    </p>
+  </div>
+
+</section>
+
+<footer>
+    <strong>DIGIFIESTA 2026</strong><br>
+    MVJ Degree College · IT Club<br>
+    Innovation · Creativity · Collaboration
+  </footer>
+</main>
+
+<!-- ================= SINGLE VIDEO PAGE ================= -->
+<main id="videoPage" class="page">
+  <header>
+    <div class="brand">DIGI<span>FIESTA</span> 2026</div>
+
+    <div class="header-actions">
+      <button class="outline-btn" onclick="backToEvents()">← Events</button>
+      <button class="outline-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <section class="video-wrap">
+    <button class="btn back-btn" onclick="backToEvents()">
+      ← BACK TO EVENTS
+    </button>
+
+    <h1 class="video-title gradient">
+      DIGIFIESTA 2026 — OFFICIAL LAUNCH
+    </h1>
+
+    <p class="video-description">
+      Welcome to DIGIFIESTA 2026. Let the celebration begin!
+    </p>
+
+    <div class="video-frame">
+      <video id="eventVideo" controls playsinline preload="metadata">
+        Your browser does not support HTML video.
+      </video>
+    </div>
+
+    <p class="video-help" id="videoHelp" aria-live="polite">
+      Your official launch video will appear here.
+    </p>
+
+    <div style="text-align:center; margin-top:28px;">
+      <button class="btn" onclick="backToEvents()">
+        EXPLORE DAY 1 &amp; DAY 2 EVENTS
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <strong>DIGIFIESTA 2026</strong><br>
+    MVJ Degree College · IT Club
+  </footer>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+const CORRECT_EMAIL = "DIGIFIESTA2026@gmail.com";
+const CORRECT_PASSWORD = "MVJDC";
+const VIDEO_SOURCE = "videos/digifiesta-launch.mp4";
+
+const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const toast = document.getElementById("toast");
+
+let toastTimer;
+let observer;
+
+/* Keep the email fixed */
+emailInput.value = CORRECT_EMAIL;
+emailInput.readOnly = true;
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+  window.scrollTo(0, 0);
+
+  if (pageId === "welcomePage") {
+    setupReveal();
+  }
+}
+
+function goHome() {
+  showPage("welcomePage");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+loginForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+
+  if (
+    email.toLowerCase() === CORRECT_EMAIL.toLowerCase() &&
+    password === CORRECT_PASSWORD
+  ) {
+    showPage("welcomePage");
+    launchConfetti();
+    showToast("🎉 Login successful! Welcome to DIGIFIESTA!");
+  } else {
+    showToast("Incorrect email or password. Please try again.");
+  }
+});
+
+/* This is the only function that opens the launch video */
+function openVideo() {
+  const video = document.getElementById("eventVideo");
+  const help = document.getElementById("videoHelp");
+
+  video.pause();
+  video.onerror = null;
+  video.onloadedmetadata = null;
+
+  video.src = VIDEO_SOURCE;
+  video.load();
+
+  help.textContent =
+    "Loading the official launch video. Press Play if it does not start automatically.";
+
+  video.onerror = () => {
+    help.textContent =
+      "Video could not load. Make sure videos/digifiesta-launch.mp4 exists beside index.html.";
+  };
+
+  video.onloadedmetadata = () => {
+    help.textContent =
+      "Video ready. Press Play to watch the official launch video.";
+  };
+
+  showPage("videoPage");
+}
+
+function backToEvents() {
+  const video = document.getElementById("eventVideo");
+
+  video.pause();
+  showPage("welcomePage");
+
+  setTimeout(() => {
+    document.getElementById("day1").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, 50);
+}
+
+function logout() {
+  const video = document.getElementById("eventVideo");
+
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
+
+  showPage("loginPage");
+
+  passwordInput.value = "";
+  emailInput.value = CORRECT_EMAIL;
+
+  showToast("You have logged out.");
+}
+
+function setupReveal() {
+  if (observer) observer.disconnect();
+
+  const items = document.querySelectorAll("#welcomePage .reveal");
+
+  if (!("IntersectionObserver" in window)) {
+    items.forEach(item => item.classList.add("visible"));
+    return;
+  }
+
+  observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.12 });
+
+  items.forEach(item => observer.observe(item));
+}
+
+function launchConfetti() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const colors = [
+    "#ff303b",
+    "#ff7900",
+    "#ffd166",
+    "#ffffff",
+    "#ff4b6e"
+  ];
+
+  for (let i = 0; i < 160; i++) {
+    const piece = document.createElement("div");
+
+    piece.className = "confetti";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.width = 5 + Math.random() * 7 + "px";
+    piece.style.height = 8 + Math.random() * 12 + "px";
+
+    piece.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    piece.style.setProperty(
+      "--duration",
+      (2.5 + Math.random() * 2.5) + "s"
+    );
+
+    piece.style.setProperty(
+      "--drift",
+      (Math.random() * 300 - 150) + "px"
+    );
+
+    document.body.appendChild(piece);
+
+    piece.addEventListener("animationend", () => {
+      piece.remove();
+    }, { once: true });
+  }
+}
+
+setupReveal();
+</script>
+
+</body>
+</html>
